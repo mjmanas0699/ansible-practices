@@ -1,1 +1,16 @@
 ---
+- hosts: all
+  tasks: 
+  - name: "install nginx"
+    package:
+      name: nginx
+      state: present
+  - name: "copy file"
+    copy:
+      src: "index.html"
+      dest: "/var/www/html/"
+  - name: "restart nginx serivce"
+    service:
+      name: nginx
+      state: restarted 
+    

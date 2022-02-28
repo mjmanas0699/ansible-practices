@@ -1,0 +1,11 @@
+---
+- hosts: all
+  tasks: 
+  - name: debug
+    debug:
+      msg: 
+      - "Here are the some facts about systems:"
+      - "DATE: {{ansible_date_time.date}}"
+      - "DISTRIBUTION: {{ansible_distribution}}"
+      - "DNS SERVER: {{ansible_dns.nameservers[0]}}"
+      
