@@ -1,0 +1,16 @@
+- hosts: all
+  vars:
+    packages: 
+        - name: httpd
+          required: false
+        - name: mysql
+          required: false
+        - apache: apache
+          required: false
+  tasks: 
+  - name: "install {{item.name}} "
+    package:
+      name: "{{item.name}}"
+      state: present
+    when: item.required == true
+    loop: "{{ packages }}"
