@@ -1,0 +1,19 @@
+- hosts: web
+  tasks:
+  - name:
+    user:
+       name: "manas"
+       uid: 1040
+    register: user_de
+  - debug:
+       var: user_de.home 
+  - file:  
+       path: /home/manas/{{item}}
+       mode: 0644
+       owner: manas
+       group: manas
+       state: touch
+    with_items: 
+        - "test1"
+        - "test"
+    register: file
